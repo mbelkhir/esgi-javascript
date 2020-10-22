@@ -41,9 +41,6 @@ function leet(a) {
   });
 }
 
-console.log(leet("AnaCOnDA"));
-
-
 function prop_access(obj, nomObjet) {
   var resultat = "";
   for (var i in obj) {
