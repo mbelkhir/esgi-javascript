@@ -44,18 +44,7 @@ function leet(a) {
 console.log(leet("anaconda"));
 
 
-function prop_access(obj, nomObjet) {
-  var resultat = "";
-  for (var i in obj) {
-    if (obj.hasOwnProperty(i)) {
-        resultat += nomObjet + "." + i + " = " + obj[i] + "\n";
-    }
-    else {
-    console.log(nomObjet+" not exist");
-    }
-  }
-  return resultat;
-}
+
 
 function verlan(a) {
   return a.split(" ").map((word) => { return word.split("").reverse().join("");}).join(" ");
@@ -91,4 +80,28 @@ function vig(string, code) {
 
       return String.fromCharCode(((letterNumber + codeNumber) % 26) + aCode);
     }).join("");
+}
+
+
+function prop_access(objet, chaine) {
+    if (typeof chaine != "string"){
+        return objet;
+    }
+    if(typeof objet != 'object' || objet == null) {
+        console.log(chaine + ' not exist');
+        return;
+    }
+    if (chaine === '') {
+        return objet;
+    }
+    const props = chaine.split('.');
+    let propriete = objet;
+    props.forEach(function (prop) {
+        if(!propriete.hasOwnProperty(prop)) {
+            console.log(chaine + ' not exist');
+            return;
+        }
+        propriete = propriete[prop];
+    });
+    return propriete;
 }
